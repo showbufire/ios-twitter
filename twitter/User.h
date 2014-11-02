@@ -10,11 +10,15 @@
 
 @interface User : NSObject
 
-- (id)initWithDictionary:(NSDictionary *)dictionary;
-
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *screenName;
 @property (nonatomic, strong) NSString *profileImageURL;
 @property (nonatomic, strong) NSString *tagLine;
+
+- (id)initWithDictionary:(NSDictionary *)dictionary;
+
++ (User *)currentUser;
+
++ (void)setCurrentUser:(User *)currentUser;
 
 @end

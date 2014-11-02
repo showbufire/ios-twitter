@@ -30,6 +30,13 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
+    User *user = [User currentUser];
+    if (user != nil) {
+        NSLog(@"Welcome %@", user.name);
+    } else {
+        NSLog(@"Not logged in");
+    }
+    
     
     return YES;
 }

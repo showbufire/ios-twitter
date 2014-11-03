@@ -11,6 +11,7 @@
 #import "TweetCellView.h"
 #import "Tweet.h"
 #import "TwitterClient.h"
+#import "common.h"
 
 @interface TweetsViewControlller ()
 
@@ -24,6 +25,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    self.title = @"Twitter";
+    // 0x55acee
+    self.navigationController.navigationBar.barTintColor = (UIColorFromRGB(0x55acee));
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    [self.navigationController.navigationBar setBarStyle:UIBarStyleBlack];
+    
+    UIBarButtonItem *postButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"pen-24.png"] style:UIBarButtonItemStylePlain target:self action:@selector(onPostNewTweet)];
+
+    
+    UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"logout-24.png"] style:UIBarButtonItemStylePlain target:self action:@selector(onLogout)];
+    
+    self.navigationItem.leftBarButtonItem = postButton;
+    self.navigationItem.rightBarButtonItem = logoutButton;
+    
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -39,6 +55,14 @@
             NSLog(@"Unable to load the timeline: %@", error);
         }
     }];
+}
+
+- (void)onLogout {
+    [User logout];
+}
+
+- (void)onPostNewTweet {
+    
 }
 
 - (void)didReceiveMemoryWarning {

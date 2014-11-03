@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "TwitterClient.h"
 #import "TweetsViewControlller.h"
+#import "common.h"
 
 @interface LoginViewController ()
 
@@ -33,6 +34,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.view.backgroundColor = (UIColorFromRGB(0x55acee));
 }
 
 - (void)didReceiveMemoryWarning {

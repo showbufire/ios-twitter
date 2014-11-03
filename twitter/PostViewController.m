@@ -71,7 +71,8 @@ NSString * const postTextPlaceHolder = @"Yo, what's up?";
     }
     [[TwitterClient sharedInstance] statusUpdate:dict completion:^(Tweet *tweet, NSError *error) {
         if (error == nil) {
-           [self dismissViewControllerAnimated:YES completion:nil];
+            [self.delegate postViewController:self didPostTweet:tweet];
+            [self dismissViewControllerAnimated:YES completion:nil];
             NSLog(@"tweet succeded");
         } else {
             NSLog(@"tweet failed %@", error);

@@ -19,7 +19,7 @@
 @interface TweetsViewControlller ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSArray* tweets;
+@property (strong, nonatomic) NSMutableArray *tweets;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 
 @end
@@ -54,7 +54,7 @@
     
     [[TwitterClient sharedInstance] loadTimeline:nil completion:^(NSArray *tweets, NSError *error) {
         if (error == nil) {
-            self.tweets = tweets;
+            self.tweets = [tweets mutableCopy];
             [self.tableView reloadData];
         } else {
             NSLog(@"Unable to load the timeline: %@", error);
@@ -78,7 +78,7 @@
 - (void)onRefresh {
     [[TwitterClient sharedInstance] loadTimeline:nil completion:^(NSArray *tweets, NSError *error) {
         if (error == nil) {
-            self.tweets = tweets;
+            self.tweets = [tweets mutableCopy];
             [self.tableView reloadData];
         } else {
             NSLog(@"Unable to load the timeline: %@", error);
@@ -93,8 +93,14 @@
 
 - (void)onTapPost {
     PostViewController *vc = [[PostViewController alloc] init];
+    vc.delegate = self;
     UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:vc];
     [self presentViewController:nvc animated:YES completion:nil];
+}
+
+- (void)postViewController:(PostViewController *)postViewController didPostTweet:(Tweet *)tweet {
+    [self.tweets insertObject:tweet atIndex:0];
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PostViewController.h"
 
-@interface TweetsViewControlller : UIViewController<UITableViewDelegate, UITableViewDataSource>
+@interface TweetsViewControlller : UIViewController<UITableViewDelegate, UITableViewDataSource, PostViewControllerDelegate>
 
 @end

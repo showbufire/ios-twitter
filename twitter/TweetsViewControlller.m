@@ -61,6 +61,11 @@
     }];
 }
 
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
+}
+
 - (void) registerRefreshView {
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
     refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
@@ -105,6 +110,24 @@
     [cell setTweet:self.tweets[indexPath.row]];
     return cell;
 }
+
+/*
+static TweetCellView *_prototypeTweetCellView;
+
+- (TweetCellView *)prototypeTweetCellView {
+    if (_prototypeTweetCellView == nil) {
+        _prototypeTweetCellView = [self.tableView dequeueReusableCellWithIdentifier:@"TweetCellView"];
+    }
+    
+    return _prototypeTweetCellView;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    [[self prototypeTweetCellView] setTweet:self.tweets[indexPath.row]];
+    CGSize size = [self.prototypeTweetCellView.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    return size.height + 50;
+}
+ */
 
 /*
 #pragma mark - Navigation

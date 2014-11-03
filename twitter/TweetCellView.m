@@ -8,6 +8,8 @@
 
 #import "TweetCellView.h"
 #import <UIImageView+AFNetworking.h>
+#import <DateTools.h>
+
 
 @interface TweetCellView()
 
@@ -37,7 +39,7 @@
     [self.profileImageView setImageWithURL:[NSURL URLWithString:tweet.user.profileImageURL]];
     self.nameLabel.text = tweet.user.name;
     self.screenNameLabel.text = [NSString stringWithFormat:@"@%@", tweet.user.screenName];
-    self.timestampLabel.text = @"2h";
+    self.timestampLabel.text = tweet.createdAt.shortTimeAgoSinceNow;    
     self.tweetTextLabel.text = tweet.text;    
 }
 

@@ -20,7 +20,6 @@
     [[TwitterClient sharedInstance] loginWithCompletion:^(User *user, NSError *error) {
         if (user != nil) {
             // modally present tweets view
-            NSLog(@"Welcome to twitter %@", user.name);
             TweetsViewControlller *vc = [[TweetsViewControlller alloc] init];
             UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:vc];
             [self presentViewController:nvc animated:YES completion:nil];

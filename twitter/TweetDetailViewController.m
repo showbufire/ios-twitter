@@ -38,6 +38,11 @@
     [self.profileImageView setImageWithURL:[NSURL URLWithString:user.profileImageURL]];
     self.tweetTextLabel.text = self.tweet.text;
     
+    NSString *dateString = [NSDateFormatter localizedStringFromDate:self.tweet.createdAt
+                                                          dateStyle:NSDateFormatterShortStyle
+                                                          timeStyle:NSDateFormatterShortStyle];
+    self.timestampLabel.text = dateString;
+    
     UIBarButtonItem *replyButton = [[UIBarButtonItem alloc] initWithTitle:@"Reply" style:UIBarButtonItemStylePlain target:self action:@selector(onReply)];
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Home" style:UIBarButtonItemStylePlain target:self action:@selector(onBackToHome)];
     

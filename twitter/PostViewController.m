@@ -66,6 +66,9 @@ NSString * const postTextPlaceHolder = @"Yo, what's up?";
     NSString *text = self.postTextView.text;
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     [dict setObject:text forKey:@"status"];
+    if (self.replyToTweet != nil) {
+        [dict setObject:[NSNumber numberWithInteger:self.replyToTweet.tweetID] forKey:@"in_reply_to_status_id"];
+    }
     [[TwitterClient sharedInstance] statusUpdate:dict completion:^(Tweet *tweet, NSError *error) {
         if (error == nil) {
            [self dismissViewControllerAnimated:YES completion:nil];

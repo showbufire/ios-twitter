@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PostViewController">
+            <connections>
+                <outlet property="nameLabel" destination="Odo-6H-bFp" id="GCS-x2-V9l"/>
+                <outlet property="postTextView" destination="fEq-Yr-8Lk" id="L9j-BA-2mL"/>
+                <outlet property="profileImageView" destination="aOY-7J-3w1" id="FgJ-kR-Xsv"/>
+                <outlet property="screenNameLabel" destination="W2d-vr-Pqp" id="NBW-dT-dwf"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aOY-7J-3w1">
+                    <rect key="frame" x="8" y="74" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="PfC-e9-iE3"/>
+                        <constraint firstAttribute="width" constant="50" id="wIh-KV-oWA"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CWL-q3-bZR">
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Last" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Odo-6H-bFp">
+                    <rect key="frame" x="66" y="74" width="66" height="18"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="screenname" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W2d-vr-Pqp">
+                    <rect key="frame" x="66" y="96" width="84" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Yo, what's up?" translatesAutoresizingMaskIntoConstraints="NO" id="fEq-Yr-8Lk">
+                    <rect key="frame" x="8" y="132" width="304" height="428"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="aOY-7J-3w1" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="74" id="7zC-Bh-Zgu"/>
+                <constraint firstItem="fEq-Yr-8Lk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="SAd-Yz-YNW"/>
+                <constraint firstItem="aOY-7J-3w1" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="Sd0-G5-mGq"/>
+                <constraint firstItem="Odo-6H-bFp" firstAttribute="leading" secondItem="aOY-7J-3w1" secondAttribute="trailing" constant="8" id="aNZ-YE-aSb"/>
+                <constraint firstItem="fEq-Yr-8Lk" firstAttribute="top" secondItem="aOY-7J-3w1" secondAttribute="bottom" constant="8" id="bea-s3-R5n"/>
+                <constraint firstAttribute="trailing" secondItem="fEq-Yr-8Lk" secondAttribute="trailing" constant="8" id="fVZ-op-UYT"/>
+                <constraint firstItem="W2d-vr-Pqp" firstAttribute="leading" secondItem="aOY-7J-3w1" secondAttribute="trailing" constant="8" id="jEh-2I-8vS"/>
+                <constraint firstAttribute="bottom" secondItem="fEq-Yr-8Lk" secondAttribute="bottom" constant="8" id="qDd-3S-KgN"/>
+                <constraint firstItem="W2d-vr-Pqp" firstAttribute="top" secondItem="Odo-6H-bFp" secondAttribute="bottom" constant="4" id="qc9-Ge-nU4"/>
+                <constraint firstItem="Odo-6H-bFp" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="74" id="qw2-vs-xYg"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </view>
+    </objects>
+</document>

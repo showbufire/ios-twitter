@@ -6,12 +6,14 @@
 //  Copyright (c) 2014 Xiao Jiang. All rights reserved.
 //
 
+#import "common.h"
+
 #import "TweetsViewControlller.h"
 #import "User.h"
 #import "TweetCellView.h"
 #import "Tweet.h"
 #import "TwitterClient.h"
-#import "common.h"
+#import "PostViewController.h"
 
 @interface TweetsViewControlller ()
 
@@ -33,7 +35,7 @@
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     [self.navigationController.navigationBar setBarStyle:UIBarStyleBlack];
     
-    UIBarButtonItem *postButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"pen-24.png"] style:UIBarButtonItemStylePlain target:self action:@selector(onPostNewTweet)];
+    UIBarButtonItem *postButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"pen-24.png"] style:UIBarButtonItemStylePlain target:self action:@selector(onTapPost)];
 
     
     UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"logout-24.png"] style:UIBarButtonItemStylePlain target:self action:@selector(onLogout)];
@@ -84,8 +86,10 @@
     [User logout];
 }
 
-- (void)onPostNewTweet {
-    
+- (void)onTapPost {
+    PostViewController *vc = [[PostViewController alloc] init];
+    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:vc];
+    [self presentViewController:nvc animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -34,9 +34,8 @@ NSString * const postTextPlaceHolder = @"Yo, what's up?";
     self.screenNameLabel.text = [NSString stringWithFormat:@"@%@", user.screenName];
     [self.profileImageView setImageWithURL:[NSURL URLWithString:user.profileImageURL]];
     
-    [self.postTextView setTextColor:[UIColor lightGrayColor]];
-    [self.postTextView setText:postTextPlaceHolder];
     self.postTextView.delegate = self;
+    [self setInitialText];
     
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.tintColor = (UIColorFromRGB(0x55acee));
@@ -46,6 +45,17 @@ NSString * const postTextPlaceHolder = @"Yo, what's up?";
     
     self.navigationItem.leftBarButtonItem = tweetButton;
     self.navigationItem.rightBarButtonItem = cancelButton;
+}
+
+- (void)setInitialText {
+    if (self.replyToTweet != nil) {
+        [self.postTextView setTextColor:[UIColor blackColor]];
+        [self.postTextView setText:[NSString stringWithFormat:@"@%@ ", self.replyToTweet.user.screenName]];
+        [self.postTextView becomeFirstResponder];
+    } else {
+        [self.postTextView setTextColor:[UIColor lightGrayColor]];
+        [self.postTextView setText:postTextPlaceHolder];
+    }
 }
 
 - (void) onCancel {

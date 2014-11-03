@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Tweet.h"
 
 @interface PostViewController : UIViewController <UITextViewDelegate>
+
+@property (nonatomic, strong) Tweet *replyToTweet;
 
 @end

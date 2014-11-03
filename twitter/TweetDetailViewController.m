@@ -11,6 +11,7 @@
 #import <UIImageView+AFNetworking.h>
 #import "TwitterClient.h"
 #import "Tweet.h"
+#import "PostViewController.h"
 
 @interface TweetDetailViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
@@ -63,7 +64,10 @@
 }
 
 - (void)onReply {
-    
+    PostViewController *vc = [[PostViewController alloc] init];
+    vc.replyToTweet = self.tweet;
+    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:vc];
+    [self presentViewController:nvc animated:YES completion:nil];
 }
 
 - (IBAction)onRetweet:(id)sender {

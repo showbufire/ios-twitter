@@ -16,6 +16,9 @@
 @property (nonatomic, strong) User *user;
 @property (nonatomic) NSInteger retweetCount;
 @property (nonatomic) NSInteger favCount;
+@property (nonatomic) BOOL favorited;
+@property (nonatomic) BOOL retweeted;
+@property (nonatomic) NSInteger tweetID;
 
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 

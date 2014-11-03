@@ -9,6 +9,8 @@
 #import "TweetDetailViewController.h"
 #import "common.h"
 #import <UIImageView+AFNetworking.h>
+#import "TwitterClient.h"
+#import "Tweet.h"
 
 @interface TweetDetailViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
@@ -18,6 +20,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *timestampLabel;
 @property (weak, nonatomic) IBOutlet UILabel *retweetCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *favCountLabel;
+@property (weak, nonatomic) IBOutlet UIButton *replyButton;
+@property (weak, nonatomic) IBOutlet UIButton *retweetButton;
+@property (weak, nonatomic) IBOutlet UIButton *favButton;
 
 @end
 
@@ -43,8 +48,15 @@
                                                           timeStyle:NSDateFormatterShortStyle];
     self.timestampLabel.text = dateString;
     
+    [self refreshFav];
+    
     self.retweetCountLabel.text = [NSString stringWithFormat:@"%ld", self.tweet.retweetCount];
-    self.favCountLabel.text = [NSString stringWithFormat:@"%ld", self.tweet.favCount];
+    
+    if (self.tweet.retweeted) {
+        [self.retweetButton setImage:[UIImage imageNamed:@"rt-on.png"] forState:UIControlStateNormal];
+    } else {
+        [self.retweetButton setImage:[UIImage imageNamed:@"rt.png"] forState:UIControlStateNormal];
+    }
     
     UIBarButtonItem *replyButton = [[UIBarButtonItem alloc] initWithTitle:@"Reply" style:UIBarButtonItemStylePlain target:self action:@selector(onReply)];
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Home" style:UIBarButtonItemStylePlain target:self action:@selector(onBackToHome)];
@@ -52,12 +64,39 @@
     self.navigationItem.leftBarButtonItem = backButton;
     self.navigationItem.rightBarButtonItem = replyButton;
 }
+- (IBAction)onTapReply:(id)sender {
+    [self onReply];
+}
 
-- (void) onReply {
+- (void)onReply {
     
 }
 
-- (void) onBackToHome {
+- (IBAction)onRetweet:(id)sender {
+}
+
+- (IBAction)onFav:(id)sender {
+    [[TwitterClient sharedInstance] createFav:self.tweet.tweetID completion:^(Tweet *tweet, NSError *error) {
+        if (error == nil) {
+            self.tweet = tweet;
+            [self refreshFav];
+        } else {
+            NSLog(@"fav failied: %@", error);
+        }
+    }];
+}
+
+- (void)refreshFav {
+    [self.favCountLabel setText:[NSString stringWithFormat:@"%ld", self.tweet.favCount]];
+    
+    if (self.tweet.favorited) {
+        [self.favButton setImage:[UIImage imageNamed:@"fav_on.png"] forState:UIControlStateNormal];
+    } else {
+        [self.favButton setImage:[UIImage imageNamed:@"fav.png"] forState:UIControlStateNormal];
+    }
+}
+
+- (void)onBackToHome {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

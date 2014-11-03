@@ -22,4 +22,6 @@
 
 - (void) statusUpdate:(NSDictionary *)params completion:(void (^)(Tweet *, NSError *))completion;
 
+- (void) createFav:(NSInteger)tweetID completion:(void (^)(Tweet *, NSError *))completion;
+
 @end

@@ -7,6 +7,10 @@
 //
 
 #import "User.h"
+#import "TwitterClient.h"
+
+NSString * const UserDidLoginNotification = @"UserDidLoginNotification";
+NSString * const UserDidLogoutNotification = @"UserDidLogoutNotification";
 
 @interface User ()
 
@@ -53,6 +57,13 @@ NSString * const kCurrentUserKey = @"kCurrentUserKey";
     } else {
         [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kCurrentUserKey];
     }
+}
+
++ (void)logout {
+    [User setCurrentUser:nil];
+    [[TwitterClient sharedInstance].requestSerializer removeAccessToken];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:UserDidLogoutNotification object:nil];
 }
 
 @end

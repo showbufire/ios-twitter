@@ -14,6 +14,7 @@
 #import "Tweet.h"
 #import "TwitterClient.h"
 #import "PostViewController.h"
+#import "TweetDetailViewController.h"
 
 @interface TweetsViewControlller ()
 
@@ -29,7 +30,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.title = @"Twitter";
+    self.title = @"Home";
     // 0x55acee
     self.navigationController.navigationBar.barTintColor = (UIColorFromRGB(0x55acee));
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
@@ -109,6 +110,13 @@
     TweetCellView *cell = [self.tableView dequeueReusableCellWithIdentifier:@"TweetCellView"];
     [cell setTweet:self.tweets[indexPath.row]];
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    TweetDetailViewController *vc = [[TweetDetailViewController alloc] init];
+    vc.tweet = self.tweets[indexPath.row];
+    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:vc];
+    [self presentViewController:nvc animated:YES completion:nil];
 }
 
 /*

@@ -1,0 +1,59 @@
+//
+//  TweetDetailViewController.m
+//  twitter
+//
+//  Created by Xiao Jiang on 11/2/14.
+//  Copyright (c) 2014 Xiao Jiang. All rights reserved.
+//
+
+#import "TweetDetailViewController.h"
+#import "common.h"
+#import <UIImageView+AFNetworking.h>
+
+@interface TweetDetailViewController ()
+@property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *screenNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *tweetTextLabel;
+@property (weak, nonatomic) IBOutlet UILabel *timestampLabel;
+@property (weak, nonatomic) IBOutlet UILabel *retweetCountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *favCountLabel;
+
+@end
+
+@implementation TweetDetailViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.
+    self.title = @"Tweet";
+    // 0x55acee
+    self.navigationController.navigationBar.barTintColor = (UIColorFromRGB(0x55acee));
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    [self.navigationController.navigationBar setBarStyle:UIBarStyleBlack];
+    
+    User *user = self.tweet.user;
+    self.nameLabel.text = user.name;
+    self.screenNameLabel.text = [NSString stringWithFormat:@"@%@", user.screenName];
+    [self.profileImageView setImageWithURL:[NSURL URLWithString:user.profileImageURL]];
+    self.tweetTextLabel.text = self.tweet.text;
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end

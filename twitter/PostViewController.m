@@ -31,7 +31,7 @@ NSString * const postTextPlaceHolder = @"Yo, what's up?";
     // Do any additional setup after loading the view from its nib.
     User *user = [User currentUser];
     self.nameLabel.text = user.name;
-    self.screenNameLabel.text = user.screenName;
+    self.screenNameLabel.text = [NSString stringWithFormat:@"@%@", user.screenName];
     [self.profileImageView setImageWithURL:[NSURL URLWithString:user.profileImageURL]];
     
     [self.postTextView setTextColor:[UIColor lightGrayColor]];

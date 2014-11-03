@@ -71,14 +71,18 @@
 }
 
 - (IBAction)onRetweet:(id)sender {
-    [[TwitterClient sharedInstance] createRetweet:self.tweet.tweetID completion:^(Tweet *tweet, NSError *error) {
-        if (error == nil) {
-            self.tweet = tweet;
-            [self refreshRetweet];
-        } else {
-            NSLog(@"rt failied: %@", error);
-        }
-    }];
+    if (!self.tweet.retweeted) {
+        [[TwitterClient sharedInstance] createRetweet:self.tweet.tweetID completion:^(Tweet *tweet, NSError *error) {
+            if (error == nil) {
+                // the returned retweet is the retweet
+                self.tweet.retweetCount += 1;
+                self.tweet.retweeted = true;
+                [self refreshRetweet];
+            } else {
+                NSLog(@"rt failied: %@", error);
+            }
+        }];
+    }
 }
 
 - (void)refreshRetweet {

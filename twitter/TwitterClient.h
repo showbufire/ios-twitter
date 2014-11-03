@@ -17,4 +17,6 @@
 
 - (void) openURL:(NSURL *)url;
 
+- (void) loadTimeline:(NSDictionary *)params completion:(void (^)(NSArray *tweets, NSError *error))completion;
+
 @end

@@ -20,6 +20,8 @@
 		813BE1F91A06B19400F969CF /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 813BE1F81A06B19400F969CF /* User.m */; };
 		81EA828F1A06D2F100032936 /* TweetsViewControlller.m in Sources */ = {isa = PBXBuildFile; fileRef = 81EA828D1A06D2F100032936 /* TweetsViewControlller.m */; };
 		81EA82901A06D2F100032936 /* TweetsViewControlller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81EA828E1A06D2F100032936 /* TweetsViewControlller.xib */; };
+		81EA82951A0708D700032936 /* TweetCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81EA82931A0708D700032936 /* TweetCellView.m */; };
+		81EA82961A0708D700032936 /* TweetCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81EA82941A0708D700032936 /* TweetCellView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,9 @@
 		81EA828C1A06D2F100032936 /* TweetsViewControlller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetsViewControlller.h; sourceTree = "<group>"; };
 		81EA828D1A06D2F100032936 /* TweetsViewControlller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetsViewControlller.m; sourceTree = "<group>"; };
 		81EA828E1A06D2F100032936 /* TweetsViewControlller.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TweetsViewControlller.xib; sourceTree = "<group>"; };
+		81EA82921A0708D700032936 /* TweetCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetCellView.h; sourceTree = "<group>"; };
+		81EA82931A0708D700032936 /* TweetCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetCellView.m; sourceTree = "<group>"; };
+		81EA82941A0708D700032936 /* TweetCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TweetCellView.xib; sourceTree = "<group>"; };
 		8B9AF3C5CE62AEF5C439D214 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBE4A6CF2F3FF48C831B0EAD /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		FF56DF97DD2178159CFFF11B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -111,6 +116,7 @@
 		813BE1811A00A3D600F969CF /* twitter */ = {
 			isa = PBXGroup;
 			children = (
+				81EA82911A0708B200032936 /* Views */,
 				813BE1F31A06B13F00F969CF /* API */,
 				813BE1F21A06B13200F969CF /* Controllers */,
 				813BE1F11A06B12B00F969CF /* Models */,
@@ -180,6 +186,16 @@
 				813BE1AE1A00B02E00F969CF /* TwitterClient.m */,
 			);
 			name = API;
+			sourceTree = "<group>";
+		};
+		81EA82911A0708B200032936 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				81EA82921A0708D700032936 /* TweetCellView.h */,
+				81EA82931A0708D700032936 /* TweetCellView.m */,
+				81EA82941A0708D700032936 /* TweetCellView.xib */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		9903848496EF34B6ED29F61E /* Frameworks */ = {
@@ -273,6 +289,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				813BE1931A00A3D600F969CF /* LaunchScreen.xib in Resources */,
+				81EA82961A0708D700032936 /* TweetCellView.xib in Resources */,
 				81EA82901A06D2F100032936 /* TweetsViewControlller.xib in Resources */,
 				813BE1901A00A3D600F969CF /* Images.xcassets in Resources */,
 				813BE1AC1A00AE3500F969CF /* LoginViewController.xib in Resources */,
@@ -332,6 +349,7 @@
 				813BE1F91A06B19400F969CF /* User.m in Sources */,
 				813BE1F61A06B18500F969CF /* Tweet.m in Sources */,
 				813BE1851A00A3D600F969CF /* main.m in Sources */,
+				81EA82951A0708D700032936 /* TweetCellView.m in Sources */,
 				813BE1AB1A00AE3500F969CF /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

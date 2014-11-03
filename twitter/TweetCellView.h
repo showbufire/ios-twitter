@@ -1,5 +1,5 @@
 //
-//  TweetsViewControlller.h
+//  TweetCellView.h
 //  twitter
 //
 //  Created by Xiao Jiang on 11/2/14.
@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Tweet.h"
 
-@interface TweetsViewControlller : UIViewController<UITableViewDelegate, UITableViewDataSource>
+@interface TweetCellView : UITableViewCell
+
+- (void) setTweet:(Tweet *)tweet;
 
 @end

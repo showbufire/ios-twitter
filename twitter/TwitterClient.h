@@ -24,4 +24,6 @@
 
 - (void) createFav:(NSInteger)tweetID completion:(void (^)(Tweet *, NSError *))completion;
 
+- (void) createRetweet:(NSInteger)tweetID completion:(void (^)(Tweet *, NSError *))completion;
+
 @end

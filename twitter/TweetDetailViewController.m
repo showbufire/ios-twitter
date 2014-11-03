@@ -50,13 +50,7 @@
     
     [self refreshFav];
     
-    self.retweetCountLabel.text = [NSString stringWithFormat:@"%ld", self.tweet.retweetCount];
-    
-    if (self.tweet.retweeted) {
-        [self.retweetButton setImage:[UIImage imageNamed:@"rt-on.png"] forState:UIControlStateNormal];
-    } else {
-        [self.retweetButton setImage:[UIImage imageNamed:@"rt.png"] forState:UIControlStateNormal];
-    }
+    [self refreshRetweet];
     
     UIBarButtonItem *replyButton = [[UIBarButtonItem alloc] initWithTitle:@"Reply" style:UIBarButtonItemStylePlain target:self action:@selector(onReply)];
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Home" style:UIBarButtonItemStylePlain target:self action:@selector(onBackToHome)];
@@ -73,6 +67,24 @@
 }
 
 - (IBAction)onRetweet:(id)sender {
+    [[TwitterClient sharedInstance] createRetweet:self.tweet.tweetID completion:^(Tweet *tweet, NSError *error) {
+        if (error == nil) {
+            self.tweet = tweet;
+            [self refreshRetweet];
+        } else {
+            NSLog(@"rt failied: %@", error);
+        }
+    }];
+}
+
+- (void)refreshRetweet {
+    self.retweetCountLabel.text = [NSString stringWithFormat:@"%ld", self.tweet.retweetCount];
+    
+    if (self.tweet.retweeted) {
+        [self.retweetButton setImage:[UIImage imageNamed:@"rt_on.png"] forState:UIControlStateNormal];
+    } else {
+        [self.retweetButton setImage:[UIImage imageNamed:@"rt.png"] forState:UIControlStateNormal];
+    }
 }
 
 - (IBAction)onFav:(id)sender {

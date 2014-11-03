@@ -37,13 +37,26 @@
     self.screenNameLabel.text = [NSString stringWithFormat:@"@%@", user.screenName];
     [self.profileImageView setImageWithURL:[NSURL URLWithString:user.profileImageURL]];
     self.tweetTextLabel.text = self.tweet.text;
+    
+    UIBarButtonItem *replyButton = [[UIBarButtonItem alloc] initWithTitle:@"Reply" style:UIBarButtonItemStylePlain target:self action:@selector(onReply)];
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Home" style:UIBarButtonItemStylePlain target:self action:@selector(onBackToHome)];
+    
+    self.navigationItem.leftBarButtonItem = backButton;
+    self.navigationItem.rightBarButtonItem = replyButton;
+}
+
+- (void) onReply {
+    
+}
+
+- (void) onBackToHome {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 
 /*

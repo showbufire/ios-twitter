@@ -42,7 +42,6 @@ NSString * const postTextPlaceHolder = @"Yo, what's up?";
     self.navigationController.navigationBar.tintColor = (UIColorFromRGB(0x55acee));
     
     UIBarButtonItem *tweetButton = [[UIBarButtonItem alloc] initWithTitle:@"Tweet" style:UIBarButtonItemStylePlain target:self action:@selector(onTweet)];
-    
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(onCancel)];
     
     self.navigationItem.leftBarButtonItem = tweetButton;

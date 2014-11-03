@@ -6,9 +6,12 @@
 //  Copyright (c) 2014 Xiao Jiang. All rights reserved.
 //
 
+#import "common.h"
+
 #import "PostViewController.h"
 #import "User.h"
 #import <UIImageView+AFNetworking.h>
+#import "TwitterClient.h"
 
 NSString * const postTextPlaceHolder = @"Yo, what's up?";
 
@@ -34,6 +37,34 @@ NSString * const postTextPlaceHolder = @"Yo, what's up?";
     [self.postTextView setTextColor:[UIColor lightGrayColor]];
     [self.postTextView setText:postTextPlaceHolder];
     self.postTextView.delegate = self;
+    
+    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.tintColor = (UIColorFromRGB(0x55acee));
+    
+    UIBarButtonItem *tweetButton = [[UIBarButtonItem alloc] initWithTitle:@"Tweet" style:UIBarButtonItemStylePlain target:self action:@selector(onTweet)];
+    
+    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(onCancel)];
+    
+    self.navigationItem.leftBarButtonItem = tweetButton;
+    self.navigationItem.rightBarButtonItem = cancelButton;
+}
+
+- (void) onCancel {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void) onTweet {
+    NSString *text = self.postTextView.text;
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    [dict setObject:text forKey:@"status"];
+    [[TwitterClient sharedInstance] statusUpdate:dict completion:^(Tweet *tweet, NSError *error) {
+        if (error == nil) {
+           [self dismissViewControllerAnimated:YES completion:nil];
+            NSLog(@"tweet succeded");
+        } else {
+            NSLog(@"tweet failed %@", error);
+        }
+    }];
 }
 
 - (BOOL) textViewShouldBeginEditing:(UITextView *)textView

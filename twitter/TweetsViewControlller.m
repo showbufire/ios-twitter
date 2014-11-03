@@ -17,6 +17,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray* tweets;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
 
 @end
 
@@ -47,6 +48,8 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
+    [self registerRefreshView];
+    
     [[TwitterClient sharedInstance] loadTimeline:nil completion:^(NSArray *tweets, NSError *error) {
         if (error == nil) {
             self.tweets = tweets;
@@ -54,6 +57,26 @@
         } else {
             NSLog(@"Unable to load the timeline: %@", error);
         }
+    }];
+}
+
+- (void) registerRefreshView {
+    UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
+    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
+    [refresh addTarget:self action:@selector(onRefresh) forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = refresh;
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
+}
+
+- (void)onRefresh {
+    [[TwitterClient sharedInstance] loadTimeline:nil completion:^(NSArray *tweets, NSError *error) {
+        if (error == nil) {
+            self.tweets = tweets;
+            [self.tableView reloadData];
+        } else {
+            NSLog(@"Unable to load the timeline: %@", error);
+        }
+        [self.refreshControl endRefreshing];
     }];
 }
 

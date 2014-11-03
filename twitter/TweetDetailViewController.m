@@ -43,6 +43,9 @@
                                                           timeStyle:NSDateFormatterShortStyle];
     self.timestampLabel.text = dateString;
     
+    self.retweetCountLabel.text = [NSString stringWithFormat:@"%ld", self.tweet.retweetCount];
+    self.favCountLabel.text = [NSString stringWithFormat:@"%ld", self.tweet.favCount];
+    
     UIBarButtonItem *replyButton = [[UIBarButtonItem alloc] initWithTitle:@"Reply" style:UIBarButtonItemStylePlain target:self action:@selector(onReply)];
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Home" style:UIBarButtonItemStylePlain target:self action:@selector(onBackToHome)];
     

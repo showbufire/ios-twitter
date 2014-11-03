@@ -9,7 +9,7 @@
                 <outlet property="favCountLabel" destination="P7q-s3-duF" id="rft-lf-zjM"/>
                 <outlet property="nameLabel" destination="9sM-qq-thS" id="BKH-xZ-RPq"/>
                 <outlet property="profileImageView" destination="LO3-bo-U18" id="joO-he-ndy"/>
-                <outlet property="retweetCountLabel" destination="P7q-s3-duF" id="SOu-bY-hu0"/>
+                <outlet property="retweetCountLabel" destination="2At-6a-Vxu" id="GEK-RZ-ZZD"/>
                 <outlet property="screenNameLabel" destination="439-he-mWP" id="xG4-GV-npS"/>
                 <outlet property="timestampLabel" destination="Mba-PW-KSh" id="vuv-2b-7fH"/>
                 <outlet property="tweetTextLabel" destination="x3K-c4-Asg" id="FQn-Dd-Ng7"/>

@@ -22,6 +22,10 @@
         formatter.dateFormat = @"EEE MMM d HH:mm:ss Z y";
         
         self.createdAt = [formatter dateFromString:createdAtString];
+        self.retweetCount = [dictionary[@"retweet_count"] integerValue];
+        self.favCount = [dictionary[@"favorite_count"] integerValue];
+        NSLog(@"%ld", self.retweetCount);
+        NSLog(@"%ld", self.favCount);
     }
     
     return self;

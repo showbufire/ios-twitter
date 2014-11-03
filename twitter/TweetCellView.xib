@@ -36,6 +36,7 @@
                         <rect key="frame" x="66" y="32" width="246" height="18"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="246" id="9Ko-2n-4LU"/>
+                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="500" id="ABo-bX-qSj"/>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="b0H-Cb-Msv"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -72,6 +73,7 @@
                     <constraint firstItem="vCe-XK-QC3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="r0Y-iU-Ead"/>
                     <constraint firstAttribute="trailing" secondItem="tFK-9J-EN8" secondAttribute="trailing" constant="8" id="umo-NQ-ucn"/>
                     <constraint firstItem="tFK-9J-EN8" firstAttribute="leading" secondItem="7Hh-xc-jgO" secondAttribute="trailing" constant="8" id="w4N-HO-P29"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="7Hh-xc-jgO" secondAttribute="bottom" constant="8" id="yBc-qp-Ag4"/>
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">

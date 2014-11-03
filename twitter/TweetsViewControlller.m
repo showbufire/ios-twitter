@@ -28,6 +28,8 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.tableView registerNib:[UINib nibWithNibName:@"TweetCellView" bundle:nil] forCellReuseIdentifier:@"TweetCellView"];
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     [[TwitterClient sharedInstance] loadTimeline:nil completion:^(NSArray *tweets, NSError *error) {
         if (error == nil) {

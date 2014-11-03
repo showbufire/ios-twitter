@@ -11,6 +11,11 @@
 @interface TweetCellView()
 
 @property (strong, nonatomic) Tweet *_tweet;
+@property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *screenNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *timestampLabel;
+@property (weak, nonatomic) IBOutlet UILabel *tweetTextLabel;
 
 @end
 
@@ -28,6 +33,7 @@
 
 - (void)setTweet:(Tweet *)tweet {
    self._tweet = tweet;
+    
 }
 
 

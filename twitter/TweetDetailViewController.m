@@ -92,14 +92,25 @@
 }
 
 - (IBAction)onFav:(id)sender {
-    [[TwitterClient sharedInstance] createFav:self.tweet.tweetID completion:^(Tweet *tweet, NSError *error) {
-        if (error == nil) {
-            self.tweet = tweet;
-            [self refreshFav];
-        } else {
-            NSLog(@"fav failied: %@", error);
-        }
-    }];
+    if (!self.tweet.favorited) {
+        [[TwitterClient sharedInstance] createFav:self.tweet.tweetID completion:^(Tweet *tweet, NSError *error) {
+            if (error == nil) {
+                self.tweet = tweet;
+                [self refreshFav];
+            } else {
+                NSLog(@"fav failied: %@", error);
+            }
+        }];
+    } else {
+        [[TwitterClient sharedInstance] destroyFav:self.tweet.tweetID completion:^(Tweet *tweet, NSError *error) {
+            if (error == nil) {
+                self.tweet = tweet;
+                [self refreshFav];
+            } else {
+                NSLog(@"unfav failied: %@", error);
+            }
+        }];
+    }
 }
 
 - (void)refreshFav {

@@ -92,6 +92,18 @@ NSString * const kTwitterBaseUrl = @"https://api.twitter.com";
     }];
 }
 
+- (void) destroyFav:(NSInteger)tweetID completion:(void (^)(Tweet *, NSError *))completion {
+    NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:[NSNumber numberWithInteger:tweetID], @"id", nil];
+    
+    [self POST:@"1.1/favorites/destroy.json" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        Tweet *tweet = [[Tweet alloc] initWithDictionary:responseObject];
+        completion(tweet, nil);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        completion(nil, error);
+    }];
+    
+}
+
 - (void) createRetweet:(NSInteger)tweetID completion:(void (^)(Tweet *, NSError *))completion {
 
     [self POST:[NSString stringWithFormat:@"1.1/statuses/retweet/%ld.json", tweetID] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {

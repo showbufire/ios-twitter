@@ -36,7 +36,12 @@
 
 - (void)setTweet:(Tweet *)tweet {
     self._tweet = tweet;
+    
     [self.profileImageView setImageWithURL:[NSURL URLWithString:tweet.user.profileImageURL]];
+    CALayer * l = [self.profileImageView layer];
+    [l setMasksToBounds:YES];
+    [l setCornerRadius:10.0];
+    
     self.nameLabel.text = tweet.user.name;
     self.screenNameLabel.text = [NSString stringWithFormat:@"@%@", tweet.user.screenName];
     self.timestampLabel.text = tweet.createdAt.shortTimeAgoSinceNow;    

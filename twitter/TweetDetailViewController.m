@@ -42,6 +42,10 @@
     self.nameLabel.text = user.name;
     self.screenNameLabel.text = [NSString stringWithFormat:@"@%@", user.screenName];
     [self.profileImageView setImageWithURL:[NSURL URLWithString:user.profileImageURL]];
+    CALayer * l = [self.profileImageView layer];
+    [l setMasksToBounds:YES];
+    [l setCornerRadius:10.0];
+    
     self.tweetTextLabel.text = self.tweet.text;
     
     NSString *dateString = [NSDateFormatter localizedStringFromDate:self.tweet.createdAt

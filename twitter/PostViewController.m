@@ -24,6 +24,7 @@ NSInteger const maxChars = 140;
 @property (weak, nonatomic) IBOutlet UILabel *countdownLabel;
 
 
+
 @end
 
 @implementation PostViewController
@@ -35,6 +36,9 @@ NSInteger const maxChars = 140;
     self.nameLabel.text = user.name;
     self.screenNameLabel.text = [NSString stringWithFormat:@"@%@", user.screenName];
     [self.profileImageView setImageWithURL:[NSURL URLWithString:user.profileImageURL]];
+    CALayer * l = [self.profileImageView layer];
+    [l setMasksToBounds:YES];
+    [l setCornerRadius:10.0];
     
     self.postTextView.delegate = self;
     [self setInitialText];
@@ -87,6 +91,7 @@ NSInteger const maxChars = 140;
     if (textView.textColor == [UIColor lightGrayColor]) {
         textView.text = @"";
         textView.textColor = [UIColor blackColor];
+        self.countdownLabel.hidden = NO;
     }
     
     return YES;

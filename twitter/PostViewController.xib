@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PostViewController">
             <connections>
+                <outlet property="countdownLabel" destination="o6j-Jb-tlR" id="8Nt-HY-iyx"/>
                 <outlet property="nameLabel" destination="Odo-6H-bFp" id="GCS-x2-V9l"/>
                 <outlet property="postTextView" destination="fEq-Yr-8Lk" id="L9j-BA-2mL"/>
                 <outlet property="profileImageView" destination="aOY-7J-3w1" id="FgJ-kR-Xsv"/>
@@ -48,6 +49,12 @@
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="140" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o6j-Jb-tlR">
+                    <rect key="frame" x="283" y="74" width="29" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -56,11 +63,13 @@
                 <constraint firstItem="aOY-7J-3w1" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="Sd0-G5-mGq"/>
                 <constraint firstItem="Odo-6H-bFp" firstAttribute="leading" secondItem="aOY-7J-3w1" secondAttribute="trailing" constant="8" id="aNZ-YE-aSb"/>
                 <constraint firstItem="fEq-Yr-8Lk" firstAttribute="top" secondItem="aOY-7J-3w1" secondAttribute="bottom" constant="8" id="bea-s3-R5n"/>
+                <constraint firstItem="o6j-Jb-tlR" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="74" id="d5x-FP-MrA"/>
                 <constraint firstAttribute="trailing" secondItem="fEq-Yr-8Lk" secondAttribute="trailing" constant="8" id="fVZ-op-UYT"/>
                 <constraint firstItem="W2d-vr-Pqp" firstAttribute="leading" secondItem="aOY-7J-3w1" secondAttribute="trailing" constant="8" id="jEh-2I-8vS"/>
                 <constraint firstAttribute="bottom" secondItem="fEq-Yr-8Lk" secondAttribute="bottom" constant="8" id="qDd-3S-KgN"/>
                 <constraint firstItem="W2d-vr-Pqp" firstAttribute="top" secondItem="Odo-6H-bFp" secondAttribute="bottom" constant="4" id="qc9-Ge-nU4"/>
                 <constraint firstItem="Odo-6H-bFp" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="74" id="qw2-vs-xYg"/>
+                <constraint firstAttribute="trailing" secondItem="o6j-Jb-tlR" secondAttribute="trailing" constant="8" id="ty1-ao-IS6"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>

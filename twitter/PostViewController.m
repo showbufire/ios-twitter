@@ -14,12 +14,14 @@
 #import "TwitterClient.h"
 
 NSString * const postTextPlaceHolder = @"Yo, what's up?";
+NSInteger const maxChars = 140;
 
 @interface PostViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *screenNameLabel;
 @property (weak, nonatomic) IBOutlet UITextView *postTextView;
+@property (weak, nonatomic) IBOutlet UILabel *countdownLabel;
 
 
 @end
@@ -92,6 +94,13 @@ NSString * const postTextPlaceHolder = @"Yo, what's up?";
 
 -(void) textViewDidChange:(UITextView *)textView
 {
+    NSInteger countdown = maxChars - textView.text.length;
+    self.countdownLabel.text = [NSString stringWithFormat:@"%ld", countdown];
+    if (countdown < 0) {
+        self.countdownLabel.textColor = [UIColor redColor];
+    } else {
+        self.countdownLabel.textColor = [UIColor blackColor];
+    }
     if(textView.text.length == 0){
         textView.textColor = [UIColor lightGrayColor];
         textView.text = postTextPlaceHolder;

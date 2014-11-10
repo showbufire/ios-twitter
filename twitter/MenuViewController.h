@@ -8,6 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@class MenuViewController;
+
+@protocol MenuViewControllerDelegate <NSObject>
+
+- (void) onSelectHomeOption:(MenuViewController *)menuViewController;
+- (void) onSelectProfileOption:(MenuViewController *)menuViewController;
+
+@end
+
 @interface MenuViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+
+@property (nonatomic, weak) id<MenuViewControllerDelegate> delegate;
 
 @end

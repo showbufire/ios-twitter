@@ -1,5 +1,5 @@
 //
-//  SideViewController.h
+//  ProfileViewController.h
 //  twitter
 //
 //  Created by Xiao Jiang on 11/9/14.
@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MenuViewController.h"
+#import "User.h"
 
-@interface SideViewController : UIViewController<MenuViewControllerDelegate>
+@interface ProfileViewController : UIViewController
+
+@property (nonatomic, strong) User *user;
 
 @end

@@ -42,15 +42,21 @@
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    return [self.menuTitles count];
 }
-
-
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [[UITableViewCell alloc] init];
     cell.textLabel.text = self.menuTitles[indexPath.row];
     return cell;
+}
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 0) {
+        [self.delegate onSelectHomeOption:self];
+    } else if (indexPath.row == 1) {
+        [self.delegate onSelectProfileOption:self];
+    }
 }
 
 /*

@@ -22,9 +22,7 @@
     [[TwitterClient sharedInstance] loginWithCompletion:^(User *user, NSError *error) {
         if (user != nil) {
             // modally present tweets view
-            TweetsViewControlller *vc = [[TweetsViewControlller alloc] init];
-            UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:vc];
-            SideViewController *svc = [[SideViewController alloc] initWithMainController:nvc];
+            SideViewController *svc = [[SideViewController alloc] init];
             [self presentViewController:svc animated:YES completion:nil];
         } else {
             // present error view

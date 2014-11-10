@@ -10,6 +10,7 @@
 #import "TwitterClient.h"
 #import "TweetsViewControlller.h"
 #import "common.h"
+#import "SideViewController.h"
 
 @interface LoginViewController ()
 
@@ -23,7 +24,8 @@
             // modally present tweets view
             TweetsViewControlller *vc = [[TweetsViewControlller alloc] init];
             UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:vc];
-            [self presentViewController:nvc animated:YES completion:nil];
+            SideViewController *svc = [[SideViewController alloc] initWithMainController:nvc];
+            [self presentViewController:svc animated:YES completion:nil];
         } else {
             // present error view
         }

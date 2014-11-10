@@ -12,6 +12,7 @@
 #import "User.h"
 #import "Tweet.h"
 #import "TweetsViewControlller.h"
+#import "SideViewController.h"
 
 @interface AppDelegate ()
 
@@ -35,7 +36,8 @@
         NSLog(@"Welcome %@", user.name);
         TweetsViewControlller *vc = [[TweetsViewControlller alloc] init];
         UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:vc];
-        self.window.rootViewController = nvc;
+        SideViewController *svc = [[SideViewController alloc] initWithMainController:nvc];
+        self.window.rootViewController = svc;
     } else {
         NSLog(@"Not logged in");
         LoginViewController *vc = [[LoginViewController alloc] init];

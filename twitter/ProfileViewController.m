@@ -10,6 +10,9 @@
 #import <UIImageView+AFNetworking.h>
 #import "common.h"
 #import "PostViewController.h"
+#import "TweetCellView.h"
+#import "TweetDetailViewController.h"
+#import "TwitterClient.h"
 
 @interface ProfileViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageURL;
@@ -17,6 +20,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *tweetsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *followingLabel;
 @property (weak, nonatomic) IBOutlet UILabel *followersLabel;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSMutableArray *tweets;
 
 @end
 
@@ -45,6 +50,38 @@
     self.tweetsLabel.text = [NSString stringWithFormat:@"%ld", self.user.tweetCounts];
     self.followersLabel.text = [NSString stringWithFormat:@"%ld", self.user.followerCounts];
     self.followingLabel.text = [NSString stringWithFormat:@"%ld", self.user.followingCounts];
+    
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    [self.tableView registerNib:[UINib nibWithNibName:@"TweetCellView" bundle:nil] forCellReuseIdentifier:@"TweetCellView"];
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
+    [[TwitterClient sharedInstance] loadUserTimeline:self.user.screenName completion:^(NSArray *tweets, NSError *error) {
+        if (error == nil) {
+            self.tweets = [tweets mutableCopy];
+            [self.tableView reloadData];
+        } else {
+            NSLog(@"Unable to load the timeline: %@", error);
+        }
+    }];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    TweetCellView *cell = [self.tableView dequeueReusableCellWithIdentifier:@"TweetCellView"];
+    [cell setTweet:self.tweets[indexPath.row]];
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    TweetDetailViewController *vc = [[TweetDetailViewController alloc] init];
+    vc.tweet = self.tweets[indexPath.row];
+    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:vc];
+    [self presentViewController:nvc animated:YES completion:nil];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [self.tweets count];
 }
 
 - (void)onLogout {

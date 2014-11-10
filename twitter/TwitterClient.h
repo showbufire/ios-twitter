@@ -20,6 +20,8 @@
 
 - (void) loadTimeline:(NSDictionary *)params completion:(void (^)(NSArray *tweets, NSError *error))completion;
 
+- (void) loadUserTimeline:(NSString *)screenName completion:(void (^)(NSArray *, NSError *))completion;
+
 - (void) statusUpdate:(NSDictionary *)params completion:(void (^)(Tweet *, NSError *))completion;
 
 - (void) createFav:(NSInteger)tweetID completion:(void (^)(Tweet *, NSError *))completion;
